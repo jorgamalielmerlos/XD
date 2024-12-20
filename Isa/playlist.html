@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Playlist para Ti</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7d6e0;
+      text-align: center;
+      color: #333;
+      padding: 20px;
+    }
+    h1 {
+      color: #e63946;
+    }
+    .song-list {
+      list-style: none;
+      padding: 0;
+    }
+    .song-list li {
+      margin: 10px 0;
+    }
+    button {
+      padding: 10px 15px;
+      background-color: #e63946;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #d62839;
+    }
+    #message {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #6d6875;
+    }
+    #video-container {
+      margin-top: 20px;
+    }
+    iframe {
+      border: none;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Top 10 canciones de luismi que si le dedicaria a mi princesita</h1>
+  <ul class="song-list">
+    <li><button onclick="playSong(1)">Canción 1: Soy increible niña</button></li>
+    <li><button onclick="playSong(2)">Canción 2: Cada dia mas licenciado</button></li>
+    <li><button onclick="playSong(3)">Canción 3: Te amo y por eso hago esto por vos</button></li>
+  </ul>
+  <p id="message"></p>
+  <div id="video-container"></div>
+
+  <script>
+    function playSong(songId) {
+      const message = document.getElementById('message');
+
+      // Canciones desde YouTube (embed links)
+      const songs = [
+        { src: "https://www.youtube.com/embed/KBat8_cOZlc?si=flOR1FRWyQyL_vCO", text: "Te amo mi vida" },
+        { src: "https://www.youtube.com/embed/KNQtuHVNRfs?si=nqf2k2ZAJgyXwlvm", text: "Sabor a mi🥵" },
+        { src: "https://www.youtube.com/embed/3u0AZ0M0YPU?si=C6IlYQ3NbqrFdJUq", text: "Me quede sin ideas de que poner en esta parte" }
+      ];
+
+      // Mostrar video como un iframe
+      const videoContainer = document.getElementById('video-container');
+      videoContainer.innerHTML = `<iframe width="100%" height="315" src="${songs[songId - 1].src}" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+
+      // Mostrar mensaje personalizado
+      message.textContent = songs[songId - 1].text;
+    }
+  </script>
+</body>
+</html>
